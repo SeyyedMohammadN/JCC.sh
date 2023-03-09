@@ -15,7 +15,7 @@ gregorian_to_jalali()
   local gregorian_month=$2
   local gregorian_day=$3
 
-  local g_d_m=(31 59 90 120 151 181 212 243 273 304 334)
+  local g_d_m=([1]=31 [2]=59 [3]=90 [4]=120 [5]=151 [6]=181 [7]=212 [8]=243 [9]=273 [10]=304 [11]=334)
   if [ "${gregorian_month}" -gt 2 ]
   then
     local gregorian_year2=$((gregorian_year + 1))
@@ -41,8 +41,8 @@ gregorian_to_jalali()
     local jalali_day=$((1 + ((days - 186) % 30)))
   fi
 
-  JCC_RESULT=("${jalali_year}" "${jalali_month}" "${jalali_day}")
-  printf "%d %d %d" "${JCC_RESULT[1]}" "${JCC_RESULT[2]}" "${JCC_RESULT[3]}"
+  JCC_RESULT=([1]="${jalali_year}" [2]="${jalali_month}" [3]="${jalali_day}")
+  printf '%d %d %d' "${JCC_RESULT[@]}"
 }
 
 jalali_to_gregorian()
@@ -78,7 +78,7 @@ jalali_to_gregorian()
   else
     local kab_m2=28
   fi
-  local sal_a=(31 "${kab_m2}" 31 30 31 30 31 31 30 31 30 31)
+  local sal_a=([1]=31 [2]="${kab_m2}" [3]=31 [4]=30 [5]=31 [6]=30 [7]=31 [8]=31 [9]=30 [10]=31 [11]=30 [12]=31)
   local gregorian_month=1
   while [[ ($gregorian_month -lt 13) && ($gregorian_day -gt $((sal_a[gregorian_month]))) ]]
   do
@@ -86,6 +86,6 @@ jalali_to_gregorian()
     ((gregorian_month++))
   done
 
-  JCC_RESULT=("${gregorian_year}" "${gregorian_month}" "${gregorian_day}")
-  printf "%d %d %d" "${JCC_RESULT[1]}" "${JCC_RESULT[2]}" "${JCC_RESULT[3]}"
+  JCC_RESULT=([1]="${gregorian_year}" [2]="${gregorian_month}" [3]="${gregorian_day}")
+  printf '%d %d %d' "${JCC_RESULT[@]}"
 }
