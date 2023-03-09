@@ -8,7 +8,7 @@ It has two function for converting date from Gregorian to Jalali and another to 
 * ##### [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh)  
   1. Clone the repository:  
       ```zsh
-      git clone https://github.com/smn7231/jcc-sh.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/jalali-calendar-converter
+      git clone https://github.com/smn7231/jcc.sh.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/jalali-calendar-converter
       ```
   2. Add `jalali-calendar-converter` to your plugins array:
       ```zsh
